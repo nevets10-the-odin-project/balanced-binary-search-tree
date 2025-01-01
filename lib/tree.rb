@@ -33,7 +33,29 @@ class Tree
     cur_root
   end
 
-  def delete(value)
+  def get_successor(cur_root)
+    cur_root = cur_root.right_c
+    cur_root = cur_root.left_c until cur_root.nil? || cur_root.left_c.nil?
+    cur_root
+  end
+
+  def delete(cur_root, value)
+    return if cur_root.nil?
+
+    if value < cur_root.data
+      cur_root.left_c = delete(cur_root.left_c, value)
+    elsif value > cur_root.data
+      cur_root.right_c = delete(cur_root.right_c, value)
+    else
+      return cur_root.right_c if cur_root.left_c.nil?
+      return cur_root.left_c if cur_root.right_c.nil?
+
+      successor = get_successor(cur_root)
+      cur_root.data = successor.data
+      cur_root.right_c = delete(cur_root.right_c, successor.data)
+    end
+
+    cur_root
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
