@@ -19,6 +19,12 @@ class Tree
     new_root
   end
 
+  def insert(value)
+  end
+
+  def delete(value)
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_c, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_c
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
