@@ -19,7 +19,18 @@ class Tree
     new_root
   end
 
-  def insert(value)
+  def insert(cur_root, value)
+    return Node.new(value) if cur_root.nil?
+
+    return cur_root if cur_root.data == value
+
+    if value < cur_root.data
+      cur_root.left_c = insert(cur_root.left_c, value)
+    elsif value > cur_root.data
+      cur_root.right_c = insert(cur_root.right_c, value)
+    end
+
+    cur_root
   end
 
   def delete(value)
