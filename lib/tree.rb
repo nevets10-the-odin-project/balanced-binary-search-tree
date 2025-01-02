@@ -141,6 +141,16 @@ class Tree
     return_arr unless block_given?
   end
 
+  def height(cur_root, edge_count = 0)
+    return if cur_root.nil?
+    return edge_count if cur_root.left_c.nil? && cur_root.right_c.nil?
+
+    l_count = cur_root.left_c.nil? ? edge_count : height(cur_root.left_c, edge_count + 1)
+    r_count = cur_root.right_c.nil? ? edge_count : height(cur_root.right_c, edge_count + 1)
+
+    l_count > r_count ? l_count : r_count
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_c, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_c
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
