@@ -59,7 +59,7 @@ class Tree
   end
 
   def find(value, cur_root = root)
-    node = nil
+    return if cur_root.nil?
 
     node = cur_root if cur_root.data == value
 
@@ -152,6 +152,8 @@ class Tree
   end
 
   def depth(node, cur_root = root, count = 0)
+    return if node.nil?
+
     if node == cur_root
       count
     elsif cur_root.left_c.nil? && cur_root.right_c.nil?
