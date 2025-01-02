@@ -95,6 +95,21 @@ class Tree
     return_arr.flatten unless block_given?
   end
 
+  def preorder(cur_root, return_arr = [])
+    return if cur_root.nil?
+
+    if block_given?
+      yield(cur_root)
+    else
+      return_arr << cur_root.data
+    end
+
+    preorder(cur_root.left_c, return_arr)
+    preorder(cur_root.right_c, return_arr)
+
+    return_arr
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_c, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_c
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
