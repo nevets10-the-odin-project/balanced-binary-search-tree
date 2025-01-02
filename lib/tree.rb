@@ -151,6 +151,18 @@ class Tree
     l_count > r_count ? l_count : r_count
   end
 
+  def depth(node, cur_root = root, count = 0)
+    if node == cur_root
+      count
+    elsif cur_root.left_c.nil? && cur_root.right_c.nil?
+      nil
+    elsif node.data < cur_root.data
+      cur_root.left_c.nil? ? count : depth(node, cur_root.left_c, count + 1)
+    else
+      cur_root.right_c.nil? ? count : depth(node, cur_root.right_c, count + 1)
+    end
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_c, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_c
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
