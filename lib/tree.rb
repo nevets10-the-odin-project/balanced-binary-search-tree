@@ -95,7 +95,7 @@ class Tree
     return_arr.flatten unless block_given?
   end
 
-  def preorder(cur_root, return_arr = [])
+  def preorder(cur_root, return_arr = [], &block)
     return if cur_root.nil?
 
     if block_given?
@@ -104,8 +104,8 @@ class Tree
       return_arr << cur_root.data
     end
 
-    preorder(cur_root.left_c, return_arr)
-    preorder(cur_root.right_c, return_arr)
+    preorder(cur_root.left_c, return_arr, &block)
+    preorder(cur_root.right_c, return_arr, &block)
 
     return_arr
   end
