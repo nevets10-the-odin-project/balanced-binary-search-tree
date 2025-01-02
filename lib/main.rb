@@ -5,6 +5,4 @@ arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree = Tree.new(arr)
 
 tree.pretty_print
-tree.delete(tree.root, 4)
-puts
-tree.pretty_print
+p tree.pretty_print(tree.find(67))
