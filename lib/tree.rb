@@ -126,6 +126,21 @@ class Tree
     return_arr unless block_given?
   end
 
+  def postorder(cur_root, return_arr = [], &block)
+    return if cur_root.nil?
+
+    postorder(cur_root.left_c, return_arr, &block)
+    postorder(cur_root.right_c, return_arr, &block)
+
+    if block_given?
+      yield(cur_root)
+    else
+      return_arr << cur_root.data
+    end
+
+    return_arr unless block_given?
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_c, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_c
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
