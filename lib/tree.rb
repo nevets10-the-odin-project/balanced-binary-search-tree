@@ -95,7 +95,7 @@ class Tree
     return_arr.flatten unless block_given?
   end
 
-  def preorder(cur_root, return_arr = [], &block)
+  def preorder(cur_root = root, return_arr = [], &block)
     return if cur_root.nil?
 
     if block_given?
