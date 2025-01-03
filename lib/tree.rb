@@ -172,6 +172,11 @@ class Tree
     diff <= 1
   end
 
+  def rebalance
+    new_arr = inorder(root)
+    self.root = build_tree(new_arr, 0, new_arr.length - 1)
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_c, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_c
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
