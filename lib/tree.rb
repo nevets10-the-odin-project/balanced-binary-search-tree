@@ -126,7 +126,7 @@ class Tree
     return_arr unless block_given?
   end
 
-  def postorder(cur_root, return_arr = [], &block)
+  def postorder(cur_root = root, return_arr = [], &block)
     return if cur_root.nil?
 
     postorder(cur_root.left_c, return_arr, &block)

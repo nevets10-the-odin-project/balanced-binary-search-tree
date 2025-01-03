@@ -20,4 +20,4 @@ puts "The tree is balanced. Survey says #{tree.balanced?}"
 tree.delete(999_999)
 tree.pretty_print
 
-p tree.inorder
+p tree.postorder
