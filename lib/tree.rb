@@ -110,7 +110,7 @@ class Tree
     return_arr
   end
 
-  def inorder(cur_root, return_arr = [], &block)
+  def inorder(cur_root = root, return_arr = [], &block)
     return if cur_root.nil?
 
     inorder(cur_root.left_c, return_arr, &block)
