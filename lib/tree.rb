@@ -39,20 +39,20 @@ class Tree
     cur_root
   end
 
-  def delete(cur_root, value)
+  def delete(value, cur_root = root)
     return if cur_root.nil?
 
     if value < cur_root.data
-      cur_root.left_c = delete(cur_root.left_c, value)
+      cur_root.left_c = delete(value, cur_root.left_c)
     elsif value > cur_root.data
-      cur_root.right_c = delete(cur_root.right_c, value)
+      cur_root.right_c = delete(value, cur_root.right_c)
     else
       return cur_root.right_c if cur_root.left_c.nil?
       return cur_root.left_c if cur_root.right_c.nil?
 
       successor = get_successor(cur_root)
       cur_root.data = successor.data
-      cur_root.right_c = delete(cur_root.right_c, successor.data)
+      cur_root.right_c = delete(successor.data, cur_root.right_c)
     end
 
     cur_root

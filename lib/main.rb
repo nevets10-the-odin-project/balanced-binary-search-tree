@@ -16,3 +16,6 @@ puts "The tree is balanced. Survey says #{tree.balanced?}"
 tree.rebalance
 tree.pretty_print
 puts "The tree is balanced. Survey says #{tree.balanced?}"
+
+tree.delete(999_999)
+tree.pretty_print
