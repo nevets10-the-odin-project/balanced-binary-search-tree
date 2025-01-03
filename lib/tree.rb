@@ -72,7 +72,7 @@ class Tree
     node
   end
 
-  def level_order(cur_root)
+  def level_order(cur_root = root)
     return if cur_root.nil?
 
     queue = [cur_root]
