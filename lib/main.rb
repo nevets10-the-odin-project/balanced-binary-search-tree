@@ -7,8 +7,8 @@ tree = Tree.new(arr)
 tree.pretty_print
 puts "The tree is balanced. Survey says #{tree.balanced?}"
 
-tree.insert(tree.root, 999_999)
-tree.insert(tree.root, 999_998)
+tree.insert(999_999)
+tree.insert(999_998)
 
 tree.pretty_print
 puts "The tree is balanced. Survey says #{tree.balanced?}"
